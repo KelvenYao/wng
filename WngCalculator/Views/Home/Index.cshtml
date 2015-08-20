@@ -1,0 +1,69 @@
+﻿@model WngCalculator.ViewModels.ResultViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Numeric sequence calculator</h2>
+<div class="alert alert-info" >
+    <h4>Instruction</h4>
+    <p>This is a instruction for Numeric sequence calculator.</p>
+    <ul>
+        <li>1. Enter a positive whole number</li>
+        <li>2. Click the "Submit" button</li>
+        <li>3. The application will display the result</li>
+    </ul>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4></h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.InputData.Number, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.InputData.Number, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InputData.Number, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+@if (Model != null && Model.Result != null)
+{
+    <div id="AllNumbers">
+        @Html.DisplayNameFor(model => Model.Result.AllNumbers)
+        <p>@Model.Result.AllNumbers</p>
+    </div>
+    <div id="OddNumbers">
+        @Html.DisplayNameFor(model => Model.Result.OddNumbers)
+        <p>@Model.Result.OddNumbers</p>
+    </div>
+    <div id=" EvenNumbers">
+        @Html.DisplayNameFor(model => Model.Result.EvenNumbers)
+        <p>@Model.Result.EvenNumbers</p>
+    </div>
+    <div id="CezNumbers">
+        @Html.DisplayNameFor(model => Model.Result.CezNumbers)
+        <p>@Model.Result.CezNumbers</p>
+    </div>
+    <div id="Fibonacci">
+        @Html.DisplayNameFor(model => Model.Result.Fibonacci)
+        <p>@Model.Result.Fibonacci</p>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
