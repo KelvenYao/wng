@@ -38,13 +38,13 @@ namespace WngCalculator.AutoTest
             string allNumbers = driver.FindElement(By.CssSelector("#AllNumbers p")).Text;
             Assert.AreEqual("1,2,3,4,5,6,7,8,9,", allNumbers);
             string oddNumbers = driver.FindElement(By.CssSelector("#OddNumbers p")).Text;
-            Assert.AreEqual("1,2,3,4,5,6,7,8,9,", oddNumbers);
+            Assert.AreEqual("1,3,5,7,9,", oddNumbers);
             string evenNumbers = driver.FindElement(By.CssSelector("#EvenNumbers p")).Text;
-            Assert.AreEqual("1,2,3,4,5,6,7,8,9,", evenNumbers);
+            Assert.AreEqual("2,4,6,8,", evenNumbers);
             string cezNumbers = driver.FindElement(By.CssSelector("#CezNumbers p")).Text;
-            Assert.AreEqual("1,2,3,4,5,6,7,8,9,", cezNumbers);
+            Assert.AreEqual("1,2,C,4,E,C,7,8,C,", cezNumbers);
             string fibonacci = driver.FindElement(By.CssSelector("#Fibonacci p")).Text;
-            Assert.AreEqual("1,2,3,4,5,6,7,8,9,", fibonacci);
+            Assert.AreEqual("1,2,3,5,8,", fibonacci);
         }
 
         private static void FloatNumberInputTest(string appUrl)
