@@ -8,6 +8,11 @@ namespace WngCalculator.ViewModels
 {
     public class ResultViewModelBuilder : IResultViewModelBuilder
     {
+        /// <summary>
+        /// This function builds the result viewModel according to the input integer
+        /// </summary>
+        /// <param name="integer">Input integer</param>
+        /// <returns>ResultViewModel</returns>
         public ResultViewModel Build(int integer)
         {
             ResultViewModel resultViewModel = new ResultViewModel();
@@ -22,7 +27,11 @@ namespace WngCalculator.ViewModels
                 Result = result
             };
         }
-
+        /// <summary>
+        /// This function returns the result strings
+        /// </summary>
+        /// <param name="integer">Input integer</param>
+        /// <returns>Result</returns>
         public Result GetResults(int integer)
         {
             Result result = new Result();
@@ -30,7 +39,11 @@ namespace WngCalculator.ViewModels
             result.Fibonacci = GetFibonacci(integer);
             return result;
         }
-
+        /// <summary>
+        /// This function returns Fibonacci string
+        /// </summary>
+        /// <param name="integer">Input integer</param>
+        /// <returns>string type of Fibonacci</returns>
         public string GetFibonacci(int integer)
         {
             if (integer == 0)
@@ -52,6 +65,11 @@ namespace WngCalculator.ViewModels
             return fibonacci;
         }
 
+        /// <summary>
+        /// This function builds 4 strings in one loop using ref param
+        /// </summary>
+        /// <param name="integer">Input integer</param>
+        /// <param name="result">Result</param>
         public void GetNumber(int integer, ref Result result)
         {
             for (int i = 1; i <= integer; ++i)

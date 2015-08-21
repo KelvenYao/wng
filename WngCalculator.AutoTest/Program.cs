@@ -22,7 +22,7 @@ namespace WngCalculator.AutoTest
             driver.Manage().Window.Maximize();
 
             string appUrl = GetUrl();
-            MinTest(driver, appUrl);
+            MinTest(appUrl);
             NegativeNumberInputTest(appUrl);
             FloatNumberInputTest(appUrl);
             MaxTest(appUrl);
@@ -30,6 +30,10 @@ namespace WngCalculator.AutoTest
             driver.Quit();
         }
 
+        /// <summary>
+        /// This function tests the Max test with the right input
+        /// </summary>
+        /// <param name="appUrl">application url</param>
         private static void MaxTest(string appUrl)
         {
             driver.Navigate().GoToUrl(appUrl);
@@ -46,7 +50,10 @@ namespace WngCalculator.AutoTest
             string fibonacci = driver.FindElement(By.CssSelector("#Fibonacci p")).Text;
             Assert.AreEqual("1,2,3,5,8,", fibonacci);
         }
-
+        /// <summary>
+        /// This function tests the case of float number input
+        /// </summary>
+        /// <param name="appUrl">application url</param>
         private static void FloatNumberInputTest(string appUrl)
         {
             driver.Navigate().GoToUrl(appUrl);
@@ -55,7 +62,10 @@ namespace WngCalculator.AutoTest
             bool jqueryBelivesIsVisible = IsValidationMessageVisible("The value must be a positive integer.");
             Assert.AreEqual(true, jqueryBelivesIsVisible);
         }
-
+        /// <summary>
+        /// This function tests the negative input
+        /// </summary>
+        /// <param name="appUrl">application url</param>
         private static void NegativeNumberInputTest(string appUrl)
         {
             driver.Navigate().GoToUrl(appUrl);
@@ -64,8 +74,11 @@ namespace WngCalculator.AutoTest
             bool jqueryBelivesIsVisible = IsValidationMessageVisible("The value must be a positive integer.");
             Assert.AreEqual(true, jqueryBelivesIsVisible);
         }
-
-        private static void MinTest(IWebDriver driver, string appUrl)
+        /// <summary>
+        /// This function tests the Min test without input data
+        /// </summary>
+        /// <param name="appUrl">application url</param>
+        private static void MinTest(string appUrl)
         {
             driver.Navigate().GoToUrl(appUrl);
             driver.FindElement(By.CssSelector("input[type=submit]")).Click();
@@ -73,7 +86,11 @@ namespace WngCalculator.AutoTest
             Assert.AreEqual(true, jqueryBelivesIsVisible);
             
         }
-
+        /// <summary>
+        /// This function return the value whether the error message is visible 
+        /// </summary>
+        /// <param name="validationMessage"></param>
+        /// <returns></returns>
         private static bool IsValidationMessageVisible(string validationMessage)
         {
             var js = driver as IJavaScriptExecutor;
